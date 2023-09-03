@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "set DEBUG=app:* & nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,16 @@
   "bugs": {
     "url": "https://github.com/JoseCorreaMorales/Node-REST-API/issues"
   },
-  "homepage": "https://github.com/JoseCorreaMorales/Node-REST-API#readme"
+  "homepage": "https://github.com/JoseCorreaMorales/Node-REST-API#readme",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "dotenv": "^16.3.1",
+    "excel4node": "^1.8.2",
+    "express": "^4.18.2",
+    "http-errors": "^2.0.0",
+    "mongodb": "^6.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
