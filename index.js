@@ -15,6 +15,3 @@ app.listen(Config.port, () => {
     debug(`Server is running on port ${Config.port}`)
 });
 
-
-
-
