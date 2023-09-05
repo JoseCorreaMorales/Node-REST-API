@@ -1,13 +1,15 @@
 const { ProductsService } = require('./services');
 const debug = require('debug')('app:module-products-controller');
+const { Response } = require('../common/response');
+const createError = require('http-errors');
 /* Control all the routes defined in the index. */
 module.exports.ProductsController = {
     getProducts: async (req, res) => {
         try {
             let products = await ProductsService.getAll();
-            res.status(200).json(products);
+            Response.success(res, products, "List of products", 200);
         } catch (error) {
-            res.status(500).json({ message: 'Error to get products, internal server error ', error })
+            Response.error(res);
             debug(error)
         }
     },
@@ -16,22 +18,30 @@ module.exports.ProductsController = {
         try {
             const { id } = req.params;
             let product = await ProductsService.getById(id);
-            res.status(200).json(product);
+            if (!product) {
+                Response.error(res, new createError.NotFound());
+            } else {
+                Response.success(res, product, `Product with id ${id}`, 200);
+            }
         } catch (error) {
             debug(error);
-            res.status(500).json({ message: 'Error to get product, internal server error ', error })
+            Response.error(res);
         }
     },
 
     createProduct: async (req, res) => {
         try {
             const { body } = req;
-            const insertedId = await ProductsService.createProduct(body);
-            res.json(insertedId)
+            if (!body || Object.keys(body).length === 0) {
+                Response.error(res, new createError.BadRequest());
+            } else {
+                const insertedId = await ProductsService.createProduct(body);
+                Response.success(res, insertedId, `Pruduct inserted with id ${insertedId}`, 201);
+            }
 
         } catch (error) {
             debug(error);
-            res.status(500).json({ message: 'Error to create product, internal server error ', error })
+            Response.error(res);
         }
     },
 
