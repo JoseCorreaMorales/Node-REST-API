@@ -4,6 +4,8 @@ const { Database } = require('../database/index')
 
 const COLLECTION = 'products';
 
+const { productsUtils } = require('./utils')
+
 const getAll = async () => {
     const collection = await Database(COLLECTION)
     return await collection.find({}).toArray();
@@ -22,6 +24,12 @@ const createProduct = async (product) => {
     return result.insertedId;
 }
 
+const generateReport = async (name, res) => {
+    let products = await getAll();
+    productsUtils.excelGenerate(products, name, res);
+
+}
+
 module.exports.ProductsService = {
-    getAll, getById, createProduct
+    getAll, getById, createProduct, generateReport
 }
