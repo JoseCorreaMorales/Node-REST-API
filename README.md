@@ -65,6 +65,15 @@ MONGO_DB_NAME=<database>
     * **PUT:** Update a user by ID
     * **DELETE:** Delete a user by ID
 
+* **/api/sales**
+    * **GET**: Get all sales
+    * **POST:** Create a new sale
+
+* **/api/sales/:id**
+    * **GET:** Get a single sale by ID
+    * **PUT:** Update a sale by ID
+    * **DELETE:** Delete a sale by ID
+
 
 # Database
 This project uses MongoDB as the database (Mongo Atlas). The database connection is established in the database/index.js file. The database name is "catalog" and the collection names are "products", "sales" and "users".
