@@ -67,7 +67,7 @@ MONGO_DB_NAME=<database>
 
 
 # Database
-This project uses MongoDB as the database (Mongo Atlas). The database connection is established in the database/index.js file. The database name is "node-rest-api" and the collection names are "products", "sales" and "users".
+This project uses MongoDB as the database (Mongo Atlas). The database connection is established in the database/index.js file. The database name is "catalog" and the collection names are "products", "sales" and "users".
 
 ## Configuration
 Configuration options can be set in the config.js file.
