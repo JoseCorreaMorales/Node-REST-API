@@ -4,7 +4,6 @@ const { Database } = require('../database/index');
 
 const COLLECTION = 'sales';
 
-const { salesUtils } = require('./utils');
 
 const getAll = async () => {
     const collection = await Database(COLLECTION);
